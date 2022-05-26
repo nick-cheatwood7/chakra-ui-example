@@ -12,12 +12,14 @@ import {
 import { EmailIcon, LockIcon } from "@chakra-ui/icons";
 import { Formik, Form } from "formik";
 import { InputField } from "./InputField";
-import { useAppDispatch } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { login } from "../redux/reducers/auth";
+import { Navigate } from "react-router-dom";
 
 export const RegisterCard: React.FC = () => {
+  const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
   const dispatch = useAppDispatch();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   return (
     <Box
@@ -27,6 +29,7 @@ export const RegisterCard: React.FC = () => {
       maxW="sm"
       bg={colorMode === "light" ? "white" : ""}
     >
+      {isLoggedIn && <Navigate to="/" replace={true} />}
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, actions) => {

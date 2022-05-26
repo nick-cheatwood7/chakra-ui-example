@@ -47,7 +47,7 @@ export const Sidebar: React.FC<SidebarProps> = () => {
   return (
     <VStack
       spacing={2}
-      borderRight=".5px solid #CBD5E0"
+      // borderRight=".5px solid #CBD5E0"
       height="100%"
       width="100%"
       alignItems="left"
@@ -63,7 +63,7 @@ export const Sidebar: React.FC<SidebarProps> = () => {
           }}
         />
       </RouterLink>
-      <Divider />
+      <Divider width="90%" />
       <RouterLink to="/customers">
         <SidebarButton
           label="Customers"

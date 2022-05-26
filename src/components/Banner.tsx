@@ -10,12 +10,14 @@ import {
 } from "@chakra-ui/react";
 import brandLogo from "../logo.svg";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { useAppSelector } from "../redux/hooks";
 
 interface BannerProps {}
 
 export const Banner: React.FC<BannerProps> = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
   return (
     <nav>
       <Container w="100%" maxW="full">
@@ -28,7 +30,7 @@ export const Banner: React.FC<BannerProps> = () => {
           w="100%"
         >
           {/* Logo */}
-          <Link to="/">
+          <RouterLink to="/">
             <Box>
               <Stack direction="row" alignItems="center">
                 <Image boxSize="55px" src={brandLogo} alt="brand logo" />
@@ -37,22 +39,28 @@ export const Banner: React.FC<BannerProps> = () => {
                 </Heading>
               </Stack>
             </Box>
-          </Link>
+          </RouterLink>
           {/* Login/signup */}
-          <Box>
+          <Box alignItems="center" display="flex">
             <Button variant="ghost" m="4" onClick={toggleColorMode}>
               {colorMode === "light" ? <MoonIcon color="gray" /> : <SunIcon />}
             </Button>
-            <Link to="/signin">
-              <Button mr="6" variant="link">
-                Sign In
-              </Button>
-            </Link>
-            <Link to="signup">
-              <Button mr="12" colorScheme="teal" variant="solid">
-                Sign Up
-              </Button>
-            </Link>
+
+            <Box display="inline" mr="12" hidden={isLoggedIn}>
+              <RouterLink to="/signin">
+                <Button mr="6" variant="link">
+                  Sign In
+                </Button>
+              </RouterLink>
+
+              <Box display="inline">
+                <RouterLink to="signup">
+                  <Button colorScheme="teal" variant="solid">
+                    Sign Up
+                  </Button>
+                </RouterLink>
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Container>

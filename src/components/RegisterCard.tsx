@@ -11,8 +11,12 @@ import {
 import { EmailIcon, LockIcon } from "@chakra-ui/icons";
 import { Formik, Form } from "formik";
 import { InputField } from "./InputField";
+import { useAppDispatch } from "../redux/hooks";
+import { login } from "../redux/reducers/auth";
 
 export const RegisterCard: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <Box borderRadius="lg" padding="6" width="75%" maxW="sm">
       <Formik
@@ -20,6 +24,7 @@ export const RegisterCard: React.FC = () => {
         onSubmit={(values, actions) => {
           console.log(values);
           alert(JSON.stringify(values, null, 2));
+          dispatch(login());
           actions.resetForm();
         }}
       >

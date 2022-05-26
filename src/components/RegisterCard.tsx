@@ -17,7 +17,7 @@ import { login } from "../redux/reducers/auth";
 
 export const RegisterCard: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   return (
     <Box

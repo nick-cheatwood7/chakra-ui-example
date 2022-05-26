@@ -11,13 +11,16 @@ import {
 import brandLogo from "../logo.svg";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
-import { useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { setCurrentModule } from "../redux/reducers/nav";
 
 interface BannerProps {}
 
 export const Banner: React.FC<BannerProps> = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
+  const dispatch = useAppDispatch();
+
   return (
     <nav>
       <Container w="100%" maxW="full">
@@ -25,14 +28,18 @@ export const Banner: React.FC<BannerProps> = () => {
           display="flex"
           alignItems="center"
           justifyContent="space-between"
-          ml="6"
+          ml=""
           mr="6"
           w="100%"
         >
           {/* Logo */}
           <RouterLink to="/">
             <Box>
-              <Stack direction="row" alignItems="center">
+              <Stack
+                direction="row"
+                alignItems="center"
+                onClick={() => dispatch(setCurrentModule("home"))}
+              >
                 <Image boxSize="55px" src={brandLogo} alt="brand logo" />
                 <Heading as="h2" size="md">
                   React + Chakra UI Example

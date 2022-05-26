@@ -6,6 +6,7 @@ import {
   Divider,
   Heading,
   Text,
+  useColorMode,
   VStack,
 } from "@chakra-ui/react";
 import { EmailIcon, LockIcon } from "@chakra-ui/icons";
@@ -16,9 +17,16 @@ import { login } from "../redux/reducers/auth";
 
 export const RegisterCard: React.FC = () => {
   const dispatch = useAppDispatch();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Box borderRadius="lg" padding="6" width="75%" maxW="sm">
+    <Box
+      borderRadius="lg"
+      padding="6"
+      width="75%"
+      maxW="sm"
+      bg={colorMode === "light" ? "white" : ""}
+    >
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, actions) => {

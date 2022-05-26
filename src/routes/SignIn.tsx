@@ -6,7 +6,7 @@ interface signInProps {}
 
 const signIn: React.FC<signInProps> = () => {
   return (
-    <VStack justify="center" height="90vh">
+    <VStack justify="center" height="100%">
       <RegisterCard />
     </VStack>
   );

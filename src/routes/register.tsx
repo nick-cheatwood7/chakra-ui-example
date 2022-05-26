@@ -5,9 +5,7 @@ import React from "react";
 import { InputField } from "../components/InputField";
 import { Wrapper } from "../components/Wrapper";
 
-interface registerProps {}
-
-const Register: React.FC<registerProps> = ({}) => {
+const Register: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Wrapper variant="small">

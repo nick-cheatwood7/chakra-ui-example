@@ -1,14 +1,16 @@
 import React from "react";
-import { Container, VStack } from "@chakra-ui/react";
-import { RegisterCard } from "./components/RegisterCard";
+import { Container } from "@chakra-ui/react";
+import { Banner } from "./components/Banner";
+import { Outlet } from "react-router-dom";
 
 const App: React.FC = () => {
   return (
-    <Container maxW="md" w="100%">
-      <VStack justify="center" height="100vh">
-        <RegisterCard />
-      </VStack>
-    </Container>
+    <>
+      <Banner />
+      <Container maxW="full">
+        <Outlet />
+      </Container>
+    </>
   );
 };
 

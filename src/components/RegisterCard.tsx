@@ -14,7 +14,7 @@ import { InputField } from "./InputField";
 
 export const RegisterCard: React.FC = () => {
   return (
-    <Box borderRadius="lg" padding="6" width="75%">
+    <Box borderRadius="lg" padding="6" width="75%" maxW="sm">
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, actions) => {
